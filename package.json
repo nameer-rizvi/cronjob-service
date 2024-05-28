@@ -1,0 +1,45 @@
+{
+  "name": "cronjob-service",
+  "version": "0.0.1",
+  "description": "Cronjob service boilerplate built in Node.js",
+  "main": "src/cronjob.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint; exit 0",
+    "task": "NODE_ENV=development node src/task.js",
+    "job": "NODE_ENV=development node src/job.js",
+    "cronjob": "NODE_ENV=development node src/cronjob.js",
+    "start": "NODE_ENV=production node src/cronjob.js",
+    "pm2-start": "yarn && pm2 start ecosystem.config.js && pm2 logs",
+    "pm2-restart": "yarn && pm2 restart ecosystem.config.js --update-env && pm2 logs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nameer-rizvi/cronjob-service.git"
+  },
+  "keywords": [
+    "cron",
+    "job",
+    "task",
+    "worker",
+    "scheduler",
+    "service",
+    "boilerplate"
+  ],
+  "author": "Nameer Rizvi (https://github.com/nameer-rizvi)",
+  "license": "MIT",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/nameer-rizvi/cronjob-service/issues"
+  },
+  "homepage": "https://github.com/nameer-rizvi/cronjob-service#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0"
+  },
+  "dependencies": {
+    "cron": "^3.1.7",
+    "dotenv": "^16.4.5"
+  }
+}
