@@ -50,16 +50,16 @@ Restart pm2 processes defined in ecosystem.config.js.
 
 ```js
 const ecosystemConfig = {
-	apps: [
-		{
-			name: "cronjob-service",
-			script: "./src/cronjob.js",
-			env: {
-				NODE_ENV: "production",
-				TZ: "America/New_York",
-			},
-		},
-	],
+  apps: [
+    {
+      name: "cronjob-service",
+      script: "./src/cronjob.js",
+      env: {
+        NODE_ENV: "production",
+        TZ: "America/New_York",
+      },
+    },
+  ],
 };
 
 module.exports = ecosystemConfig;
