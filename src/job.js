@@ -1,4 +1,4 @@
-// Create jobs using tasks.
+// Create jobs with tasks.
 const task = require("./task");
 const withLogger = require("./withLogger");
 const config = require("./config");

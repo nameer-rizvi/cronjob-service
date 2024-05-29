@@ -9,7 +9,7 @@
     "task": "NODE_ENV=development node src/task.js",
     "job": "NODE_ENV=development node src/job.js",
     "cronjob": "NODE_ENV=development node src/cronjob.js",
-    "start": "NODE_ENV=production node src/cronjob.js",
+    "start": "NODE_ENV=test node src/cronjob.js",
     "pm2-start": "yarn && pm2 start ecosystem.config.js && pm2 logs",
     "pm2-restart": "yarn && pm2 restart ecosystem.config.js --update-env && pm2 logs"
   },

@@ -1,4 +1,4 @@
-// Schedule jobs using cron.
+// Schedule cronjobs with jobs.
 const cron = require("cron");
 const job = require("./job");
 const withLogger = require("./withLogger");
