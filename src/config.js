@@ -2,10 +2,10 @@ require("dotenv").config();
 
 const config = {
   nodeEnv: process.env.NODE_ENV,
-  nodeEnvInProduction: process.env.NODE_ENV === "production",
-  taskName: process.env.TASK,
-  jobName: process.env.JOB,
+  nodeEnv2: process.env.NODE_ENV?.toUpperCase(),
   cronjobName: process.env.CRONJOB,
+  jobName: process.env.JOB,
+  taskName: process.env.TASK,
 };
 
 module.exports = config;

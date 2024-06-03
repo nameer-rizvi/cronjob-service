@@ -1,19 +1,27 @@
 // Schedule cronjobs with jobs.
 const cron = require("cron");
 const job = require("./job");
-const withLogger = require("./withLogger");
+const decorator = require("./decorator");
 const config = require("./config");
 
-const onSecond = new cron.CronJob("* * * * * *", job.addAddSubtract);
+function onSecond() {
+  new cron.CronJob("* * * * * *", async function callback() {
+    await job.call("addAddSubtract");
+  }).start();
+}
 
-const onMinute = new cron.CronJob("* * * * *", job.reset);
+function onMinute() {
+  new cron.CronJob("* * * * *", async function callback() {
+    await job.call("reset");
+  }).start();
+}
 
-module.exports = withLogger("Cronjob", { onSecond, onMinute });
+const cronjob = new decorator("Cronjob", onSecond, onMinute);
 
 if (config.cronjobName) {
-  module.exports[config.cronjobName]();
+  cronjob.call(...config.cronjobName.split(","));
 } else {
-  for (let key of Object.keys(module.exports)) module.exports[key]();
+  cronjob.callAll();
 }
 
 // https://www.npmjs.com/package/cron

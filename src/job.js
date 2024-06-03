@@ -1,18 +1,18 @@
 // Create jobs with tasks.
 const task = require("./task");
-const withLogger = require("./withLogger");
+const decorator = require("./decorator");
 const config = require("./config");
 
-function addAddSubtract() {
-  task.add();
-  task.add();
-  task.subtract();
+async function addAddSubtract() {
+  await task.call("add", "add", "subtract");
 }
 
-function reset() {
-  task.reset();
+async function reset() {
+  await task.call("reset");
 }
 
-module.exports = withLogger("Job", { addAddSubtract, reset });
+const job = new decorator("Job", addAddSubtract, reset);
 
-if (config.jobName) module.exports[config.jobName]();
+if (config.jobName) job.call(...config.jobName.split(","));
+
+module.exports = job;

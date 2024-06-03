@@ -1,6 +1,6 @@
 // Create tasks.
 const database = require("./database");
-const withLogger = require("./withLogger");
+const decorator = require("./decorator");
 const config = require("./config");
 
 function add() {
@@ -15,6 +15,8 @@ function reset() {
   database.reset();
 }
 
-module.exports = withLogger("Task", { add, subtract, reset });
+const task = new decorator("Task", add, subtract, reset);
 
-if (config.taskName) module.exports[config.taskName]();
+if (config.taskName) task.call(...config.taskName.split(","));
+
+module.exports = task;
