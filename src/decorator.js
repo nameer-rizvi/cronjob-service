@@ -11,18 +11,18 @@ class Decorator {
   async call(...methodNames) {
     for (let methodName of methodNames) {
       if (!this.method[methodName]) {
-        util.log("🆘", `${this.name} undefined ("${methodName}")`, "error");
+        util.log.err(`${this.name} undefined ("${methodName}")`);
         continue;
       }
       try {
-        util.log("▶️ ", `${this.name} start ("${methodName}")`);
+        util.log.start(`${this.name} start ("${methodName}")`);
         await this.method[methodName]();
-        util.log("✅", `${this.name} complete ("${methodName}")`);
+        util.log.check(`${this.name} complete ("${methodName}")`);
       } catch (error) {
         const err = `${error} at ${error.stack.split(" at ")[1].trim()}`;
-        util.log("🆘", `${this.name} error ("${methodName}"): ${err}`, "error");
+        util.log.err(`${this.name} error ("${methodName}"): ${err}`);
       } finally {
-        util.log("🆗", `${this.name} finish ("${methodName}")`);
+        util.log.ok(`${this.name} finish ("${methodName}")`);
       }
     }
   }
