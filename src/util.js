@@ -1,7 +1,7 @@
 const config = require("./config");
 
-function makeLog(emoji, method = "info") {
-  return function log(message) {
+function logDecorator(emoji, method = "info") {
+  return function logMethod(message) {
     const datetime = new Date().toLocaleString().replace(",", "");
     console[method](`${datetime} - ${emoji} ${message}.`);
   };
@@ -9,12 +9,12 @@ function makeLog(emoji, method = "info") {
 
 module.exports = {
   log: {
-    check: makeLog("✅"),
-    db: makeLog("🔢"),
-    env: makeLog("🌐"),
-    err: makeLog("🆘", "error"),
-    ok: makeLog("🆗"),
-    start: makeLog("▶️ "),
+    check: logDecorator("✅"),
+    db: logDecorator("🔢"),
+    env: logDecorator("🌐"),
+    err: logDecorator("🆘", "error"),
+    ok: logDecorator("🆗"),
+    start: logDecorator("▶️ "),
   },
 };
 
