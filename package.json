@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/nameer-rizvi/cronjob-service#readme",
   "devDependencies": {
-    "@eslint/js": "^9.3.0",
-    "eslint": "^9.3.0",
+    "@eslint/js": "^9.4.0",
+    "eslint": "^9.4.0",
     "globals": "^15.3.0"
   },
   "dependencies": {
