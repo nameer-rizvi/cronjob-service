@@ -4,8 +4,7 @@ const util = require("./util");
 class Decorator {
   constructor(name, ...methods) {
     this.name = name;
-    this.method = {};
-    for (let method of methods) this.method[method.name] = method;
+    this.method = methods.reduce((r, m) => ({ ...r, [m.name]: m }), {});
   }
 
   async call(...methodNames) {
