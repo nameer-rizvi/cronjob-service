@@ -10,10 +10,6 @@ class Decorator {
 
   async call(...methodNames) {
     for (let methodName of methodNames) {
-      if (!this.method[methodName]) {
-        util.log.err(`${this.name} undefined ("${methodName}")`);
-        continue;
-      }
       try {
         util.log.start(`${this.name} start ("${methodName}")`);
         await this.method[methodName]();

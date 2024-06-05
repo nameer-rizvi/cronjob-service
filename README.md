@@ -20,7 +20,7 @@ Run a task in development environment.
 
 Run a job in development environment.
 
-`CRONJOB= yarn job`
+`CRONJOB= yarn cronjob`
 
 Run a cronjob in development environment.
 

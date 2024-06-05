@@ -14,8 +14,8 @@ function onMinute() {
 
 const cronjob = new decorator("Cronjob", onSecond, onMinute);
 
-if (config.cronjobName) {
-  cronjob.call(...config.cronjobName.split(","));
+if (config.cronjob) {
+  cronjob.call(...config.cronjob.split(","));
 } else {
   cronjob.callAll();
 }

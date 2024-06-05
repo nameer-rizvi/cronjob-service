@@ -13,6 +13,6 @@ async function reset() {
 
 const job = new decorator("Job", addAddSubtract, reset);
 
-if (config.jobName) job.call(...config.jobName.split(","));
+if (config.job) job.call(...config.job.split(","));
 
 module.exports = job;

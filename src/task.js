@@ -17,6 +17,6 @@ function reset() {
 
 const task = new decorator("Task", add, subtract, reset);
 
-if (config.taskName) task.call(...config.taskName.split(","));
+if (config.task) task.call(...config.task.split(","));
 
 module.exports = task;
