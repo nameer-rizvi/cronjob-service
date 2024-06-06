@@ -9,13 +9,12 @@ function logDecorator(emoji, method = "info") {
 
 module.exports = {
   log: {
-    check: logDecorator("✅"),
-    db: logDecorator("🔢"),
-    env: logDecorator("🌐"),
-    err: logDecorator("🆘", "error"),
-    ok: logDecorator("🆗"),
-    start: logDecorator("▶️ "),
+    cronjob: logDecorator("⏰ Cronjob"),
+    database: logDecorator("🔢 Database"),
+    evironment: logDecorator("🌐 Environment"),
+    job: logDecorator("👷 Job"),
+    task: logDecorator("📝 Task"),
   },
 };
 
-module.exports.log.env(`In ${config.nodeEnv} environment`);
+module.exports.log.evironment(`in ${config.nodeEnv}`);

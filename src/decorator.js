@@ -1,23 +1,24 @@
 // Decorator for tasks, jobs and cronjobs.
 const util = require("./util");
+// const database = require("../database");
 
 class Decorator {
   constructor(name, ...methods) {
-    this.name = name;
+    this.log = util.log[name.toLowerCase()];
     this.method = methods.reduce((r, m) => ({ ...r, [m.name]: m }), {});
   }
 
   async call(...methodNames) {
     for (let methodName of methodNames) {
       try {
-        util.log.start(`${this.name} start ("${methodName}")`);
+        this.log(`start ("${methodName}")`);
         await this.method[methodName]();
-        util.log.check(`${this.name} complete ("${methodName}")`);
+        this.log(`complete ("${methodName}")`);
       } catch (error) {
-        const err = `${error} at ${error.stack.split(" at ")[1].trim()}`;
-        util.log.err(`${this.name} error ("${methodName}"): ${err}`);
+        this.log(`error ("${methodName}"): ${error}`);
+        // await database.error.add(error);
       } finally {
-        util.log.ok(`${this.name} finish ("${methodName}")`);
+        this.log(`finish ("${methodName}")`);
       }
     }
   }

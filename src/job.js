@@ -1,6 +1,6 @@
 // Create jobs with tasks.
 const task = require("./task");
-const decorator = require("./decorator");
+const Decorator = require("./decorator");
 const config = require("./config");
 
 async function addAddSubtract() {
@@ -11,7 +11,7 @@ async function reset() {
   await task.call("reset");
 }
 
-const job = new decorator("Job", addAddSubtract, reset);
+const job = new Decorator("Job", addAddSubtract, reset);
 
 if (config.job) job.call(...config.job.split(","));
 

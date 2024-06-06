@@ -1,7 +1,7 @@
 // Schedule cronjobs with jobs.
 const cron = require("cron");
 const job = require("./job");
-const decorator = require("./decorator");
+const Decorator = require("./decorator");
 const config = require("./config");
 
 function onSecond() {
@@ -12,7 +12,7 @@ function onMinute() {
   new cron.CronJob("* * * * *", job.method.reset).start();
 }
 
-const cronjob = new decorator("Cronjob", onSecond, onMinute);
+const cronjob = new Decorator("Cronjob", onSecond, onMinute);
 
 if (config.cronjob) {
   cronjob.call(...config.cronjob.split(","));

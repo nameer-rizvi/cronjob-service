@@ -8,17 +8,17 @@ class Database {
 
   add() {
     this.count++;
-    util.log.db(`Database add ("${this.count}")`);
+    util.log.database(`add ("${this.count}")`);
   }
 
   subtract() {
     this.count--;
-    util.log.db(`Database subtract ("${this.count}")`);
+    util.log.database(`subtract ("${this.count}")`);
   }
 
   reset() {
     this.count = 0;
-    util.log.db(`Database reset ("${this.count}")`);
+    util.log.database(`reset ("${this.count}")`);
   }
 }
 
