@@ -5,11 +5,15 @@ const Decorator = require("./decorator");
 const config = require("./config");
 
 function onSecond() {
-  new cron.CronJob("* * * * * *", job.method.addAddSubtract).start();
+  new cron.CronJob("* * * * * *", function onSecondHandler() {
+    job.call("addAddSubtract");
+  }).start();
 }
 
 function onMinute() {
-  new cron.CronJob("* * * * *", job.method.reset).start();
+  new cron.CronJob("* * * * *", function onMinuteHandler() {
+    job.call("reset");
+  }).start();
 }
 
 const cronjob = new Decorator("Cronjob", onSecond, onMinute);
